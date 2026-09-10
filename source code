@@ -1,0 +1,13 @@
+#include <stdio.h>
+int main()
+{
+    int *ptr, i;
+    ptr = (int *) colloc(10, sizeof(int));
+    *ptr = 10;
+    for(i=0;i<5;i++){
+        ptr=ptr+1;
+    }
+    printf("\nptr: %d", *ptr);
+    return 0;
+}
+
