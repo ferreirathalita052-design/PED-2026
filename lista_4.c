@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include "vetor.h"
+
+int main(void) {
+    Vetor *v = vetor_criar();
+
+    printf("== Vetor recem criado ==\n");
+    show(v);
+
+    printf("\n== Inserindo elementos com append ==\n");
+    for (int i = 1; i <= 10; i++) {
+        append(v, i * 10);
+        printf("Apos append(%d): ", i * 10);
+        show(v);
+    }
+
+    printf("\n== Testando slice(v, 2, 4) ==\n");
+    Vetor *s = slice(v, 2, 4);
+    printf("Vetor original: ");
+    show(v);
+    printf("Slice criado:   ");
+    show(s);
+
+    printf("\n== Testando pop ==\n");
+    pop(v);
+    pop(v);
+    pop(v);
+    printf("Apos três pops: ");
+    show(v);
+
+    vetor_destruir(v);
+    vetor_destruir(s);
+
+    return 0;
+}
