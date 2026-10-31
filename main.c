@@ -1,0 +1,93 @@
+// main.c: utiliza essas funções para testar a lista.
+
+
+#include <stdio.h>
+#include "lista.h"
+
+int main(void) {
+    Lista l;
+
+    inicializar(&l);
+
+    printf("=== INSERCOES ===\n");
+
+    // Inserções iniciais
+    insert(&l, 0, 10);
+    insert(&l, 1, 20);
+    insert(&l, 2, 30);
+
+    printf("\nLista inicial:\n");
+    show(&l);
+    printf("Tamanho: %d\n", l.tamanho);
+
+    // Inserir no início
+    insert(&l, 0, 5);
+
+    printf("\nDepois de inserir 5 no inicio:\n");
+    show(&l);
+    printf("Tamanho: %d\n", l.tamanho);
+
+    // Inserir no meio
+    insert(&l, 2, 15);
+
+    printf("\nDepois de inserir 15 na posicao 2:\n");
+    show(&l);
+    printf("Tamanho: %d\n", l.tamanho);
+
+    // Inserir no final
+    insert(&l, l.tamanho, 40);
+
+    printf("\nDepois de inserir 40 no fim:\n");
+    show(&l);
+    printf("Tamanho: %d\n", l.tamanho);
+
+    // Testar posição inválida
+    printf("\nTentando inserir em posicao invalida:\n");
+    insert(&l, 99, 100);
+    show(&l);
+    printf("Tamanho: %d\n", l.tamanho);
+
+    printf("\n=== ACESSAR ===\n");
+
+    // Acessar posição válida
+    int valor = acessar(&l, 2);
+
+    if (valor != -1) {
+        printf("Valor na posicao 2: %d\n", valor);
+    }
+
+    // Testar acesso inválido
+    acessar(&l, 99);
+
+    printf("\n=== REMOCOES ===\n");
+
+    // Remover o primeiro nó
+    remover(&l, 0);
+
+    printf("\nDepois de remover o primeiro:\n");
+    show(&l);
+    printf("Tamanho: %d\n", l.tamanho);
+
+    // Remover um nó do meio
+    remover(&l, 1);
+
+    printf("\nDepois de remover a posicao 1:\n");
+    show(&l);
+    printf("Tamanho: %d\n", l.tamanho);
+
+    // Remover o último nó
+    remover(&l, l.tamanho - 1);
+
+    printf("\nDepois de remover o ultimo:\n");
+    show(&l);
+    printf("Tamanho: %d\n", l.tamanho);
+
+    // Liberar todos os nós restantes
+    liberar(&l);
+
+    printf("\nDepois de liberar a lista:\n");
+    show(&l);
+    printf("Tamanho: %d\n", l.tamanho);
+
+    return 0;
+}
