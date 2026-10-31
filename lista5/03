@@ -9,8 +9,7 @@ int main(void) {
 
     inicializar(&l);
 
-    printf("=== INSERCOES ===\n");
-
+    printf("=== INSERCOES ===\n")
     // Inserções iniciais
     insert(&l, 0, 10);
     insert(&l, 1, 20);
